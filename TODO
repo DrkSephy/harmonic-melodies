@@ -1,0 +1,8 @@
+TODO
+====
+
+* Lilypond filter
+* distance metrics (for pitch, for sets, and for sequences) and just
+  see which of them make sense.
+
+~~~  vim:syntax=rst
