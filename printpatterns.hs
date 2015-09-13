@@ -2,7 +2,9 @@ import Slonimsky
 import Control.Monad
 import Euterpea
 import System.Console.GetOpt
-import System.Environment
+import System.Environment -- getArgs
+import System.IO -- isEOF
+import System.Exit -- exitSuccess
 
 -- compile with ./build.sh printpatterns.hs
 
@@ -25,7 +27,6 @@ options =
           "number of notes to output"
     ]
 
--- XXX is RequireOrder reall the right thing?
 parseOpts :: [String] -> IO ([Opts -> Opts], [String])
 parseOpts args =
     case getOpt RequireOrder options args of
@@ -40,18 +41,20 @@ parseOpts args =
 processOpts :: [Opts -> Opts] -> Opts
 processOpts opts = foldr ($) defaultOpts opts
 
--- XXX do this over and over.  shouldn't use forever $ do right (since
--- we would be calling getArgs over and over)?  can you just use interact?
 main = do
     args <- getArgs
     (optList,leftover) <- parseOpts args
     let opts = processOpts optList
-    line <- getLine
-    let (p,i,l) = parsePattern line
-    print $ take (nNotes opts) $ (patGen $ slnm opts) p i l
-        where
-            patGen True = slonimsky
-            patGen False = (\a b c -> intervalScale a (toEnum b) c)
+    forever $ do
+        eof <- isEOF
+        if eof then exitSuccess
+        else do
+            line <- getLine
+            let (p,i,l) = parsePattern line
+            print $ take (nNotes opts) $ (patGen $ slnm opts) p i l
+                where
+                    patGen True = slonimsky
+                    patGen False = (\a b c -> intervalScale a (toEnum b) c)
 
 parsePattern :: String -> (Pitch, Int, [Int])
 parsePattern s = (p,i,l)
