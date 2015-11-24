@@ -14,7 +14,7 @@
 
 ### Installing ghc
 
-On *-nix, see your package manager.  For Mac, this may be useful: For [ghc](http://ghcformacosx.github.io/).
+On *-nix, see your package manager.  For Mac, this may be useful: [ghc](http://ghcformacosx.github.io/).
 
 ### Installing Euterpea
 
@@ -39,7 +39,7 @@ For Linux you can use [timidity++](http://timidity.sourceforge.net). For Mac you
   You might also need to make sure the `snd_dummy` module isn't loaded:
   `# [[lsmod | grep -q snd_dummy]] && rmmod snd_dummy`
   
-  If you have a Mac you will need to start your midi player.  
+  If you have a <b>Mac</b> you will need to start your midi player.  
 
 2. Start ghci and load Slonimsky.hs:
 
