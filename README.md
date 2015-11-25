@@ -8,7 +8,7 @@
 
 
 ## Dependencies
-* [ghc]()
+* [ghc](https://www.haskell.org/ghc/)
 * [Euterpea](https://github.com/Euterpea/Euterpea)
 * A midi player
 
@@ -32,14 +32,14 @@ For Linux you can use [timidity++](http://timidity.sourceforge.net). For Mac you
 
 ## Getting Started
 
-1. If you have <b>Linux</b> start your midi player:
+1. If you have **Linux** start your midi player:
 
   ```$ timidity -A90 -iA -Os &```
 
   You might also need to make sure the `snd_dummy` module isn't loaded:
-  `# [[lsmod | grep -q snd_dummy]] && rmmod snd_dummy`
+  `# [[ lsmod | grep -q snd_dummy ]] && rmmod snd_dummy`
   
-  If you have a <b>Mac</b> you will need to start your midi player.  
+  If you have a **Mac** you will need to start your midi player.
 
 2. Start ghci and load Slonimsky.hs:
 
